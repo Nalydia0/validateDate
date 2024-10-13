@@ -16,22 +16,30 @@ dateParser string =
 checkDateValidity :: String -> Bool
 checkDateValidity dateInput =
     case dateParser dateInput of -- use the case to perform pattern matching. This will map the parsed date to the format day month year, which just makes more sense
-    [day, month, year] | year > 0 && year <= 9999 -> --ensure year is within the right parmas
+    [day, month, year] | year >= 0 && year <= 9999 -> --ensure year is within the right parmas
         case month of -- check the date for each month
         1 | day <= 31 && day > 0 -> True
-        2 | (day > 0 && day <= 28) || (leapYearCheck [day,month,year] && day == 29) -> True
+        2 | (day > 0 && day <= 28) || (leapYearCheck [day,month,year] && day == 29) -> True -- feburary
         3 | day <= 31 && day > 0 -> True -- march
         4 | day <= 30 && day > 0 -> True --April
         5 | day <= 31 && day > 0 -> True -- May
         6 | day <= 30 && day > 0 -> True --June
-        7 | day <= 31 && day > 0 -> True -- jully
-        8 | day <= 31 && day > 0 -> True
-        
+        7 | day <= 31 && day > 0 -> True -- july
+        8 | day <= 31 && day > 0 -> True -- August
+        9 | day <= 30 && day > 0 -> True -- September
+        10| day <= 31 && day > 0 -> True -- october
+        11| day <= 30 && day > 0 -> True --November
+        12| day <= 31 && day > 0 -> True --December 
+        _ -> False --invalid month
+    _ -> False --invalid year
+
+
 
 
                     
-
+--This function checks if date is a leap year for feburary
 leapYearCheck :: [Int] -> Bool
-leapYearCheck date =  (date !! 1) `div` 4 == 0 
+leapYearCheck date =  (year `mod` 4 == 0 && year `mod` 100 /= 0) || (year `mod` 4 == 0) 
+                where year = date !! 2
                         
        
