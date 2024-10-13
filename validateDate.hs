@@ -9,4 +9,7 @@ dateParser string =
      --rest of string represents the rest of the string
     read input : dateParser restOfString --Read the first result before the comma and conveert to an int
     where -- This will split the string at the '/'
-    (input, restOfString) = break (== '/') string
+    (input, restOfStringWithSlash) = break (== '/') string
+    restOfString = drop 1 restOfStringWithSlash -- drop the '/' so that we only need to read the following numeric section i.e read will try to read / so we need to drop it
+
+    
