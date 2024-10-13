@@ -41,5 +41,9 @@ checkDateValidity dateInput =
 leapYearCheck :: [Int] -> Bool
 leapYearCheck date =  (year `mod` 4 == 0 && year `mod` 100 /= 0) || (year `mod` 4 == 0) 
                 where year = date !! 2
+
+
                         
-       
+validateDate :: String -> Bool
+validateDate date = checkDateValidity date
+
