@@ -12,12 +12,8 @@ dateParser string =
     (input, restOfStringWithSlash) = break (== '/') string
     restOfString = drop 1 restOfStringWithSlash -- drop the '/' so that we only need to read the following numeric section i.e read will try to read / so we need to drop it
 
--- Create a validation class that will perform the checks needed to see if a date is valid
-    checkDateValidity :: String -> Bool
-    checkDateValidity dateInput = 
-        let [day, month, year] = dateParser dateInput 
-        in --Make use of guards to check if the date is valid
-             
+--Create our validity checking function using guards cases and pattern matching
+checkDateValidity :: String -> Bool
                     
 
 leapYearCheck :: [Int] -> Bool
