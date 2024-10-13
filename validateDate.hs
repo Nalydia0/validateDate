@@ -19,9 +19,10 @@ checkDateValidity dateInput =
     [day, month, year] | year > 0 && year <= 9999 -> --ensure year is within the right parmas
         case month of -- check the date for each month
         1 | day <= 31 && day > 0 -> True
+        2 | (day > 0 && day <= 28) || (leapYearCheck [day,month,year] && day == 29) -> True
                     
 
 leapYearCheck :: [Int] -> Bool
-leapYearCheck date =  date !! 3 `div` 4 == 0 
+leapYearCheck date =  (date !! 1) `div` 4 == 0 
                         
        
