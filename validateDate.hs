@@ -21,8 +21,14 @@ checkDateValidity dateInput =
         1 | day <= 31 && day > 0 -> True
         2 | (day > 0 && day <= 28) || (leapYearCheck [day,month,year] && day == 29) -> True
         3 | day <= 31 && day > 0 -> True -- march
-        4 | day <= 30 && day >0 -> True --April
+        4 | day <= 30 && day > 0 -> True --April
+        5 | day <= 31 && day > 0 -> True -- May
+        6 | day <= 30 && day > 0 -> True --June
+        7 | day <= 31 && day > 0 -> True -- jully
+        8 | day <= 31 && day > 0 -> True
         
+
+
                     
 
 leapYearCheck :: [Int] -> Bool
