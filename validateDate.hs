@@ -14,6 +14,11 @@ dateParser string =
 
 --Create our validity checking function using guards cases and pattern matching
 checkDateValidity :: String -> Bool
+checkDateValidity dateInput =
+    case dateParser dateInput of -- use the case to perform pattern matching. This will map the parsed date to the format day month year, which just makes more sense
+    [day, month, year] | year > 0 && year <= 9999 -> --ensure year is within the right parmas
+        case month of -- check the date for each month
+        1 | day <= 31 && day > 0 -> True
                     
 
 leapYearCheck :: [Int] -> Bool
